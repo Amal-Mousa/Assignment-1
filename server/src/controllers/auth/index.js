@@ -61,14 +61,18 @@ const loginController = (req, res, next) => {
       return compare(password, rows[0].password);
     })
     .then((isMatch) => {
-      if (!isMatch) throw new CustomError(406, 'Please enter a correct password');
+      if (!isMatch)
+        throw new CustomError(406, 'Please enter a correct password');
       return signToken({ email, id: req.user.id, username: req.user.username });
     })
     .then((token) =>
-      res.status(200).cookie('token', token).json({
-        message: 'Logged In Successfully',
-        data: [req.user]
-      })
+      res
+        .status(200)
+        .cookie('token', token)
+        .json({
+          message: 'Logged In Successfully',
+          data: [req.user]
+        })
     )
     .catch((err) => {
       if ('isJoi' in err) {
@@ -79,4 +83,10 @@ const loginController = (req, res, next) => {
     });
 };
 
-export { signupController, loginController };
+const logoutController = (req, res) => {
+  res.clearCookie('token').json({
+    message: 'Logged Out Successfully'
+  });
+};
+
+export { signupController, loginController, logoutController };
