@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "type": "module",
+  "types": "./index.d.js",
   "scripts": {
     "dev": "cross-env NODE_ENV=development nodemon src/index"
   },

@@ -1,4 +1,4 @@
-import { verify, sign } from 'jsonwebtoken';
+import Jwt from 'jsonwebtoken';
 import dotenv from 'dotenv';
 
 dotenv.config();
@@ -7,7 +7,7 @@ const { SECRET_KEY } = process.env;
 
 const verifyToken = (token) =>
   new Promise((resolve, reject) => {
-    verify(token, SECRET_KEY, (error, decoded) => {
+    Jwt.verify(token, SECRET_KEY, (error, decoded) => {
       if (error) {
         reject(error);
       } else {
@@ -18,7 +18,7 @@ const verifyToken = (token) =>
 
 const signToken = (payload) =>
   new Promise((resolve, reject) => {
-    sign(payload, SECRET_KEY, (error, token) => {
+    Jwt.sign(payload, SECRET_KEY, (error, token) => {
       if (error) {
         reject(error);
       } else {

@@ -1,4 +1,4 @@
-import { CustomError, verifyToken } from '../helpers';
+import { CustomError, verifyToken } from '../helpers/index.js';
 
 const checkAuth = (req, res, next) => {
   const { token } = req.cookies;

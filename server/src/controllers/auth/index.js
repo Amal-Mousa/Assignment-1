@@ -1,11 +1,15 @@
 import bcrypt, { compare } from 'bcrypt';
-import { signupQuery, emailExistsQuery } from '../../database';
+import {
+  signupQuery,
+  emailExistsQuery,
+  getUserByEmailQuery
+} from '../../database/index.js';
 import {
   CustomError,
   signToken,
   signupSchema,
   loginSchema
-} from '../../helpers';
+} from '../../helpers/index.js';
 
 const signupController = (req, res, next) => {
   const {
@@ -42,4 +46,41 @@ const signupController = (req, res, next) => {
     });
 };
 
-export default signupController;
+const loginController = (req, res, next) => {
+  const {
+    body: { password, email }
+  } = req;
+
+  loginSchema
+    .validateAsync({ password, email })
+    .then(({ email }) => getUserByEmailQuery(email))
+    .then(({ rows }) => {
+      console.log(rows);
+      if (rows.length <= 0) throw new CustomError(406, 'wrong email');
+      const [user] = rows;
+      req.user = user;
+      return compare(password, rows[0].password);
+    })
+    .then((isMatch) => {
+      if (!isMatch) throw new CustomError(406, 'Please enter correct password');
+      return signToken({ email, id: req.user.id, username: req.user.username });
+    })
+    .then((token) =>
+      res
+        .status(200)
+        .cookie('token', token)
+        .json({
+          message: 'Logged In Successfully',
+          data: req.user
+        })
+    )
+    .catch((err) => {
+      if ('isJoi' in err) {
+        next(new CustomError(406, err.details[0].message));
+      } else {
+        next(err);
+      }
+    });
+};
+
+export { signupController, loginController };

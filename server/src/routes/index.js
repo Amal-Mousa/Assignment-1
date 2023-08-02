@@ -1,6 +1,6 @@
 import express from 'express';
-import authRouter from './auth';
-import { errHandler, clientError } from '../middlewares';
+import authRouter from './auth.js';
+import { errHandler, clientError } from '../middlewares/index.js';
 
 const router = express.Router();
 

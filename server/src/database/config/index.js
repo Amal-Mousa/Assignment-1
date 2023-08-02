@@ -1,3 +1,3 @@
-import { connection } from './connection';
+import connection from './connection.js';
 
-export { connection };
+export default connection;
