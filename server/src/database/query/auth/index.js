@@ -1,4 +1,3 @@
-import { text } from 'express';
 import connection from '../../config/index.js';
 
 const signupQuery = ({ username, email, password }) => {
@@ -9,7 +8,7 @@ const signupQuery = ({ username, email, password }) => {
   return connection.query(query);
 };
 
-const getUserByEmailQuery = ({ email }) => {
+const getUserByEmailQuery = (email) => {
   const query = {
     text: 'SELECT * FROM users WHERE email = $1',
     values: [email]

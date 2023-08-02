@@ -55,24 +55,20 @@ const loginController = (req, res, next) => {
     .validateAsync({ password, email })
     .then(({ email }) => getUserByEmailQuery(email))
     .then(({ rows }) => {
-      console.log(rows);
-      if (rows.length <= 0) throw new CustomError(406, 'wrong email');
+      if (rows.length <= 0) throw new CustomError(406, 'Wrong email');
       const [user] = rows;
       req.user = user;
       return compare(password, rows[0].password);
     })
     .then((isMatch) => {
-      if (!isMatch) throw new CustomError(406, 'Please enter correct password');
+      if (!isMatch) throw new CustomError(406, 'Please enter a correct password');
       return signToken({ email, id: req.user.id, username: req.user.username });
     })
     .then((token) =>
-      res
-        .status(200)
-        .cookie('token', token)
-        .json({
-          message: 'Logged In Successfully',
-          data: req.user
-        })
+      res.status(200).cookie('token', token).json({
+        message: 'Logged In Successfully',
+        data: [req.user]
+      })
     )
     .catch((err) => {
       if ('isJoi' in err) {
