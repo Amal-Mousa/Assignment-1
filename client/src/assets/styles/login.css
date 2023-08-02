@@ -1,0 +1,96 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans&family=Poppins&display=swap');
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: 'Noto Sans', sans-serif;
+}
+
+a {
+  text-decoration: none;
+}
+p {
+  font-size: 12px;
+  margin-bottom: 20px;
+}
+.form {
+  display: flex;
+  flex-direction: column;
+
+  width: 300px;
+}
+
+.form input {
+  outline: rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+  background-color: #fcfcfb;
+  padding: 22px 12px 10px;
+  margin-bottom: 20px;
+}
+.form button {
+  margin-bottom: 20px;
+
+  border: none;
+  background-color: #0079d3;
+  font-size: 14px;
+  padding: 5px 10px;
+  border-radius: 4px;
+  color: white;
+  font-weight: 400;
+  min-height: 35px;
+  text-transform: uppercase;
+}
+.main-section {
+  display: flex;
+}
+.sidebar-image {
+  margin-right: 30px;
+  height: 100vh;
+  width: 50%;
+  background: url('../imgs/sidebar.jpg') no-repeat center center / cover;
+}
+.form-section {
+  align-self: center;
+}
+.link {
+  color: #0079d3;
+  font-weight: bold;
+}
+.error-massage {
+  color: red;
+  font-weight: bold;
+}
+.load2 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.load2 span {
+  width: 15px;
+  height: 15px;
+  background-color: #fff;
+  border-radius: 50%;
+  margin-left: 5px;
+  animation-name: loading1;
+  animation-duration: 0.5s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  animation-timing-function: linear;
+}
+
+.load2 .two {
+  animation-delay: 0.3s;
+}
+.load2 .three {
+  animation-delay: 0.6s;
+}
+@keyframes loading1 {
+  100% {
+    opacity: 0.2;
+    transform: translateY(10px);
+  }
+}
