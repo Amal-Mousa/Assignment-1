@@ -8,7 +8,7 @@ import {
 const authRouter = express.Router();
 
 authRouter.post('/signup', signupController);
-authRouter.post('/login', loginController);
+authRouter.post('/signin', loginController);
 authRouter.get('/logout', logoutController);
 
 export default authRouter;

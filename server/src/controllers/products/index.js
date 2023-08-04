@@ -12,7 +12,8 @@ const getProductsController = (req, res, next) => {
     .then((products) => {
       res.status(200).json({
         message: 'Products Retrieved Successfully',
-        data: products.rows
+        data: products.rows,
+        totalPages: Math.ceil(products.count / productPerPage),
       });
     })
     .catch(() => next(new CustomError(500, 'Serrver Error')));

@@ -7,7 +7,7 @@ const signupSchema = Joi.object({
     .regex(/^[\w-\\.]+@([\w-]+\.)+[\w-]{2,4}$/)
     .required(),
   password: Joi.string()
-    .min(5)
+    .min(6)
     .pattern(/^[a-zA-Z0-9]{3,30}$/)
     .required()
 });

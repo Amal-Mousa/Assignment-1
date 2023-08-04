@@ -33,6 +33,7 @@ const signupController = (req, res, next) => {
         .status(201)
         .cookie('token', token)
         .json({
+          status: 200,
           message: 'Created successfully',
           data: [{ username, email }]
         })
@@ -70,8 +71,16 @@ const loginController = (req, res, next) => {
         .status(200)
         .cookie('token', token)
         .json({
+          status: 200,
           message: 'Logged In Successfully',
-          data: [req.user]
+          data: [
+            {
+              id: req.user.id,
+              username: req.user.username,
+              email: req.user.email,
+              role: req.user.role
+            }
+          ]
         })
     )
     .catch((err) => {
