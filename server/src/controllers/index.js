@@ -3,11 +3,15 @@ import {
   loginController,
   logoutController
 } from './auth/index.js';
-import getProductsController from './products/index.js';
+import {
+  getProductsController,
+  productCountControlelr
+} from './products/index.js';
 
 export {
   signupController,
   loginController,
   logoutController,
-  getProductsController
+  getProductsController,
+  productCountControlelr
 };

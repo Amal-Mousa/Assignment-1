@@ -8,4 +8,12 @@ const getProductsQuery = (limit, offset) => {
   return connection.query(query);
 };
 
-export default getProductsQuery;
+
+const countProductsQuery = () => {
+  const query = {
+    text: 'SELECT COUNT(*) FROM products'
+  };
+  return connection.query(query);
+};
+
+export { getProductsQuery, countProductsQuery };

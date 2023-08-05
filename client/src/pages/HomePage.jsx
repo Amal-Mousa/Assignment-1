@@ -46,7 +46,6 @@ const HomePage = () => {
 
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
-    console.log(pageNumber);
     dispatch(fetchProducts(pageNumber));
   };
 
