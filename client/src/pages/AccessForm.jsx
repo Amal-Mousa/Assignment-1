@@ -106,12 +106,6 @@ const AccessForm = ({ endpoint }) => {
           {isOkey && (
             <p className='error-massage'>Invalid email or password!</p>
           )}
-
-          <p>
-            Forgot your
-            <a href='/'>username</a>
-            <a href='/'>password?</a>
-          </p>
           <p>
             {endpoint === 'SignIn' ? (
               <>
