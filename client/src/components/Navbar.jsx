@@ -1,20 +1,22 @@
-/* eslint-disable consistent-return */
+import { Link } from 'react-router-dom';
 import '../assets/styles/layout.css';
 
 const Navbar = () => {
+  // const navigate = useNavigate();
+
   return (
     <div className='navbar-container'>
       <div className='container'>
         <div className='navbar'>
           <div className='logo'>
-            <a href='#' className='logo-name'>
+            <Link to='/' className='logo-name'>
               E-Commerce
-            </a>
+            </Link>
           </div>
           <nav>
             <ul id='MenuItems'>
               <li>
-                <a href='#'>Home</a>
+                <Link to='/'>Home</Link>
               </li>
               <>
                 <li className='logout-ico'>
@@ -23,10 +25,10 @@ const Navbar = () => {
               </>
               <>
                 <li>
-                  <a href='#'>SignUp</a>
+                  <Link to='signup'>SignUp</Link>
                 </li>
                 <li>
-                  <a href='#'>SignIn</a>
+                  <Link to='signin'>SignIn</Link>
                 </li>
               </>
             </ul>

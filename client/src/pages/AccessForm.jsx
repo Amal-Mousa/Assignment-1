@@ -31,7 +31,6 @@ const AccessForm = ({ endpoint }) => {
     })
       .then((data) => data.json())
       .then(({ status, data }) => {
-        console.log(data, status);
         if (status === 200) {
           dispatch({ type: 'SET_USER', payload: data[0] });
           navigate('/');
